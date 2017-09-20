@@ -12,10 +12,15 @@ const Stack = (() => {
             priv.set(this, privateMembers);
         }
 
-        // Adds a value onto the end of the stack
-        push(value) {
-            _(this).storage[_(this).count] = value;
-            _(this).count++;
+        // Adds a value(s) onto the end of the stack
+        push(...value) {
+            value.forEach(val => {
+                _(this).storage[_(this).count] = val;
+                _(this).count++;
+            });
+
+            // Returns stack instance
+            return this;
         }
 
         // Removes and returns the vaue at the end of the stack
@@ -51,7 +56,8 @@ console.log(stack.peek());
 console.log(stack.pop());
 console.log(stack.peek());
 
-stack.push('C');
+stack.push('C').push('D');
+stack.push('E', 'F');
 console.log(stack.size);
 console.log(stack.peek());
 console.log(stack.pop());
