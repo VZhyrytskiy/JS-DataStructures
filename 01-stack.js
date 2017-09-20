@@ -12,9 +12,9 @@ const Stack = (() => {
             priv.set(this, privateMembers);
         }
 
-        // Adds a value(s) onto the end of the stack
-        push(...value) {
-            value.forEach(val => {
+        // Adds value(s) onto the end of the stack
+        push(...values) {
+            values.forEach(val => {
                 _(this).storage[_(this).count] = val;
                 _(this).count++;
             });
